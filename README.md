@@ -390,6 +390,7 @@ ist ein Parameter mitgegeben?
 ### Beispiele für Skripts
 Aufgabe 2 Musterlösung Aufgabe 2
 
+```console
 LOGDIR=${LOGDIR:=$HOME}
 datum=`date +"%Y.%m.%d %H:%M:%S"`
 
