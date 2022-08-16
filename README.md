@@ -386,3 +386,36 @@ last system boot --> who -b
 File exitiert
 
 ist ein Parameter mitgegeben? 
+
+### Beispiele für Skripts
+Aufgabe 2 Musterlösung Aufgabe 2
+
+LOGDIR=${LOGDIR:=$HOME}
+datum=`date +"%Y.%m.%d %H:%M:%S"`
+
+if [ ${#} -gt 0 ]
+then
+command="$*"
+else 
+echo 'usage: $[0] command' 1>&2 
+exit 1
+fi
+
+if ! [ -w $LOGDIR/aufgabe-002.log]
+then
+echo "error: cannot write to logfile "
+exit 2
+fi
+
+
+exec >>$LOGDIR/aufgabe-002.log 2>&1
+eval $command
+ecode=$?
+
+if [ $? -eq 0 ]
+then 
+echo "$datum $command SUCCESS"
+else 
+echo "$datum $command FAILURE Exit-Code: $ecode"
+fi 
+```
